@@ -4,47 +4,48 @@ const config = require("../config/index");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  async SignUp(userDTO) {
-    const { email, password, name } = userDTO;
+  async SignUp({ email, password, name }) {
     const passwordHashed = bcrypt.hashSync(password);
 
-    const userRecord = await User.create({
-      password: passwordHashed,
-      email,
-      name
-    });
-
-    return {
-      user: {
-        email: userRecord.email,
-        name: userRecord.name
-      }
-    };
-  },
-
-  async Login(userDTO) {
-    const { email, password } = userDTO;
-
-    const userRecord = await User.findOne({ email }).select("+password");
-
-    if (!userRecord) {
-      throw new Error("User not found");
-    } else {
-      console.log("validar senha: ", userRecord);
-      const correctPassword = bcrypt.compareSync(password, userRecord.password);
-
-      if (!correctPassword) {
-        throw new Error("Incorrect password");
-      }
+    try {
+      const userRecord = await User.create({
+        password: passwordHashed,
+        email,
+        name
+      });
 
       return {
         user: {
           email: userRecord.email,
           name: userRecord.name
-        },
-        token: this.generateJWT(userRecord)
+        }
       };
+    } catch (err) {
+      console.error(err);
+      return new Error("Falha ao Cadastrar usuário", err);
     }
+  },
+
+  async Login({ email, password }) {
+    const userRecord = await User.findOne({ email }).select("+password");
+
+    if (!userRecord) {
+      return new Error("Usuário não encontrado");
+    }
+
+    const correctPassword = bcrypt.compareSync(password, userRecord.password);
+
+    if (!correctPassword) {
+      return new Error("Senha incorreta");
+    }
+
+    return {
+      user: {
+        email: userRecord.email,
+        name: userRecord.name
+      },
+      token: this.generateJWT(userRecord)
+    };
   },
 
   generateJWT(user) {
