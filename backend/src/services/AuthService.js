@@ -101,8 +101,23 @@ module.exports = {
       "+passwordResetToken passwordResetExpires"
     );
 
-    if (!userRecord) {
-      throw new Error("Usuário não encontrado");
+    if (!userRecord) throw new Error("Usuário não encontrado");
+
+    if (token !== userRecord.passwordResetToken)
+      throw new Error("Token inválido");
+
+    const now = new Date();
+
+    console.log(now > userRecord.passwordResetExpires);
+    if (now > userRecord.passwordResetExpires) {
+      throw new Error("Token expirado, gere um novo");
     }
+
+    console.log("teste : ", userRecord);
+    userRecord.password = password;
+
+    await userRecord.save();
+
+    return;
   }
 };
