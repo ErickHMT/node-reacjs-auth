@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  height: 100vh;
+  margin: auto;
+}
+
+.auth-container {
+  padding: 15px;
+  border: thin solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
