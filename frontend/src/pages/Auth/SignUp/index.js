@@ -8,6 +8,8 @@ export default function SignUp() {
 
   function handleSignUp(e) {
     e.preventDefault();
+
+    console.log(email, name, password);
   }
 
   return (
@@ -53,7 +55,15 @@ export default function SignUp() {
         </button>
       </form>
 
-      <Link to="/login">Realizar login</Link>
+      <div style={{ textAlign: "right", marginTop: "15px" }}>
+        <Link to="/login"></Link>
+      </div>
+
+      <hr />
+      <p>
+        Já possui uma conta?
+        <Link to="/login"> Realizar login</Link>
+      </p>
     </>
   );
 }

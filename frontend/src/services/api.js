@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const URL_API = "http://localhost:8000/api/";
 
 const api = axios.create({

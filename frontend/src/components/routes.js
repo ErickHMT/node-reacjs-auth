@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import AuthLayout from "../layouts/Auth";
+import RouteWithLayout from "./RouteWithLayout";
+
+import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/SignUp";
-import RouteWithLayout from "./RouteWithLayout";
+import ResetPassword from "../pages/Auth/ResetPassword";
 
 const Routes = () => {
   return (

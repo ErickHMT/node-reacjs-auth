@@ -1,0 +1,17 @@
+.input-container {
+  margin: 10px 0;
+}
+
+input {
+  border: thin solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  padding: 10px 5px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.error-message {
+  font-size: 0.8rem;
+  color: red;
+  margin-left: 5px;
+}
