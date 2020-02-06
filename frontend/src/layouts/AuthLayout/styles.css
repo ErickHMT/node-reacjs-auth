@@ -10,6 +10,7 @@
 
 .auth-container {
   padding: 15px;
+  width: 100%;
   border: thin solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }

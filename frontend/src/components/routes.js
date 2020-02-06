@@ -22,7 +22,17 @@ const Routes = () => {
           component={SignUp}
           layout={AuthLayout}
         />
-        <Route path="*" component={() => <h1>Page not found</h1>} />
+        <RouteWithLayout
+          path="/reset-password"
+          exact
+          component={ResetPassword}
+          layout={AuthLayout}
+        />
+        <RouteWithLayout
+          path="*"
+          component={() => <h1>Page not found</h1>}
+          layout={FeedLayout}
+        />
       </Switch>
     </BrowserRouter>
   );

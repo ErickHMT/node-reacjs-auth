@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
-function Auth(props) {
+function AuthLayout(props) {
   const { children } = props;
 
   return (
@@ -12,9 +12,9 @@ function Auth(props) {
   );
 }
 
-Auth.propTypes = {
+AuthLayout.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string
 };
 
-export default Auth;
+export default AuthLayout;
